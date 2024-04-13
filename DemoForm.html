@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Demo Class</title>
+<style>
+  body {
+    background-image: url('back.jpg'); /* Specify the path to your background image */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust the opacity if needed */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  h2 {
+    color: #333;
+  }
+  p {
+    color: #666;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+  form {
+    margin-top: 20px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  input[type="submit"] {
+    background-color: #007bff; /* Blue button color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+  }
+  p a {
+    color: #007bff; /* Blue color for links */
+    text-decoration: none;
+  }
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensure header is on top of other content */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  }
+
+  .logo {
+     margin-top:-110px;
+    max-height: 50px;
+    margin-left: 150px; /* Move the logo to the right by 40 pixels */
+    max-width: 80px;
+  }
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+
+  /* Style for the login and signup buttons */
+  .login-btn,
+  .signup-btn {
+     
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .signup-btn {
+     margin-right: 150px; 
+    }
+
+  .login-btn {
+    background-color: transparent;
+    color: black;
+  }
+
+  .signup-btn {
+    background-color: #007bff;
+    color: white;
+  }
+
+ /* Footer Styling */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  /* Adjust styles for screens up to 768px wide (e.g., tablets and smaller desktops) */
+  .banner .text {
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .section {
+    padding: 10px;
+  }
+
+  .left-column, .right-column {
+    padding: 10px;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer img {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  footer .footer-section {
+    margin-bottom: 20px;
+  }
+}
+
+
+
+@media only screen and (max-width: 767px) {
+  /* Adjust styles for screens up to 600px wide (e.g., mobile devices) */
+  .banner .text {
+    font-size: 9px;
+    position: absolute;
+    top:42%;
+    left:40%;
+  }
+  .banner {
+       height: 150px; /* Adjusted height */
+    
+  }
+
+ .logo img {
+   margin-top:40px;
+    max-width: 120px;
+    margin-left: 0px;
+   
+  }
+
+  nav {
+    display: none;
+  }
+
+  .signup-btn {
+    margin-right: 20px;
+  }
+}
+
+ @media only screen and (max-width: 768px) {
+
+   
+    h2 {
+      font-size: 20px;
+      margin-top: 40px; /* Adjust margin for smaller devices */
+    }
+  }
+   /* Menu button for mobile view */
+   /* Menu button for mobile view */
+  .menu-btn {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
+    margin-right: 20px; /* Increased margin from the right */
+  }
+
+  .menu-icon {
+    width: 30px;
+    height: 5px;
+    background-color: black;
+    margin: 6px auto;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Menu options for mobile view */
+  .menu-options {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: #ffffff;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    margin: 35px  ; /* Adjust margin */
+  }
+
+  .menu-options hr {
+    margin: 15px 0; /* Adjust margin for horizontal lines */
+    border: none;
+    border-top: 1px solid #ccc; /* Add horizontal line */
+  }
+
+  .menu-options a {
+    display: block;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+  }
+
+  .menu-options a:hover {
+    background-color: #2642B6;
+  }
+/* Show menu options when menu button is clicked */
+.menu-btn.active .menu-icon:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-btn.active .menu-icon:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active .menu-icon:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.menu-btn.active + .menu-options {
+  display: block;
+}
+
+
+
+
+
+  /* Media query for mobile view */
+  @media only screen and (max-width: 768px) {
+    .logo {
+      margin-left: 10px;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .login-btn,
+    .signup-btn {
+      display: none;
+    }
+
+    .menu-btn {
+      display: block;
+    }
+
+    .menu-options {
+      display: none;
+    }
+  }
+
+@media only screen and (max-width: 600px) {
+  /* Adjust styles for screens up to 600px wide (e.g., mobile devices) */
+  .banner .text {
+    font-size: 16px;
+  }
+
+  .logo img {
+    max-width: 80px;
+    margin-left: 20px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .signup-btn {
+    margin-right: 20px;
+  }
+}
+</style>
+</head>
+
+
+<header>
+  <div class="logo">
+    <img margin-top:-30 style="width:250%" src="1.png" alt="Logo">
+  </div>
+ 
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Courses.html">Courses</a>
+    <a href="AboutUs.html">About</a>
+    <a href="ContactUs.html">Contact</a>
+    <a href="AdminLog.html">Admin</a>
+  </nav>
+    <a href="loginform.html" class="signup-btn">Login / Sign Up</a>
+  </div>
+
+  <!-- Menu button for mobile view -->
+  <button class="menu-btn" onclick="toggleMenu()">
+    <div class="menu-icon"></div>
+    <div class="menu-icon"></div>
+    <div class="menu-icon"></div>
+  </button>
+
+
+  <div class="menu-options" id="menuOptions">
+   <a href="index.html">Home</a>
+    <a href="Courses.html">Courses</a>
+    <a href="AboutUs.html">About</a>
+    <a href="ContactUs.html">Contact</a>
+    <a href="AdminLog.html">Admin</a>
+    <a href="loginform.html">Login / Sign Up</a>
+
+  </div>
+
+<script>
+  // Function to toggle the display of menu options on mobile view
+  function toggleMenu() {
+    var menuOptions = document.getElementById('menuOptions');
+    if (menuOptions.style.display === 'block') {
+      menuOptions.style.display = 'none';
+    } else {
+      menuOptions.style.display = 'block';
+    }
+  }
+
+  // Close the menu if clicked outside of menu options
+  document.addEventListener('click', function(event) {
+    var menuOptions = document.getElementById('menuOptions');
+    var menuBtn = document.querySelector('.menu-btn');
+
+    // Check if the clicked element is not part of the menu or menu button
+    if (!menuOptions.contains(event.target) && !menuBtn.contains(event.target)) {
+      // Close the menu if it's open
+      if (menuOptions.style.display === 'block') {
+        menuOptions.style.display = 'none';
+      }
+    }
+  });
+</script>
+</header>
+<body>
+
+<div class="container">
+  <h2>Try Before You Commit: Book a Live Demo Class</h2>
+  <p>Discover interactive learning in our demo class, led by industry experts who simplify complex concepts seamlessly with real-world applications.</p>
+
+  <form action="#" method="post">
+    <label for="full-name">Full Name*</label>
+    <input type="text" id="full-name" name="full-name" required>
+    
+    <label for="email">Email*</label>
+    <input type="email" id="email" name="email" required>
+    
+    <label for="phone-number">Phone Number*</label>
+    <input type="tel" id="phone-number" name="phone-number" required>
+    
+    <label for="course">Course*</label>
+    <select id="course" name="course" required>
+      <option value="">Select Course</option>
+      <option value="Full Stack Web Development">Full Stack Web Development</option>
+      <option value="Data Science">Data Science</option>
+      <option value="AWS">AWS</option>
+     <option value="Devops">Devops</option>
+     
+    </select>
+    
+    <label for="highest-qualification">Highest Qualification*</label>
+    <input type="text" id="highest-qualification" name="highest-qualification" required>
+    
+    <label for="year-of-graduation">Year of Graduation*</label>
+    <input type="text" id="year-of-graduation" name="year-of-graduation" required>
+    
+    <input type="submit" value="Book Demo Class">
+  </form>
+  
+  <p>By continuing, you agree to the EasyTutor’s <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enrollment Form</title>
+<style>
+
+ body {
+    margin: 0;
+    padding: 80px 0;
+    background-image: url('back.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  /* Style for the form container */
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-image: url('Enroll.jpg'); /* Add your background image URL here */
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Style for form fields */
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 24px;
+  }
+
+  /* Style for buttons */
+  .btn {
+    display: block;
+    margin: 20px auto; /* Add margin to center the button and create space */
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: #0056b3;
+  }
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensure header is on top of other content */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  }
+
+ .logo {
+     margin-top:-110px;
+    max-height: 50px;
+    margin-left: 150px; /* Move the logo to the right by 40 pixels */
+    max-width: 80px;
+  }
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+
+  /* Style for the login and signup buttons */
+  .login-btn,
+  .signup-btn {
+     
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .signup-btn {
+     margin-right: 150px; 
+    }
+
+  .login-btn {
+    background-color: transparent;
+    color: black;
+  }
+
+  .signup-btn {
+    background-color: #007bff;
+    color: white;
+  }
+footer {
+            background-color: #252827;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Social Icons Styling */
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #007bff; /* Change icon color here */
+            font-size: 24px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #0056b3; /* Change icon color on hover */
+        }
+
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  /* Adjust styles for screens up to 768px wide (e.g., tablets and smaller desktops) */
+  .banner .text {
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .section {
+    padding: 10px;
+  }
+
+  .left-column, .right-column {
+    padding: 10px;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer img {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  footer .footer-section {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  /* Adjust styles for screens up to 600px wide (e.g., mobile devices) */
+  .banner .text {
+    font-size: 16px;
+  }
+
+  .logo img {
+    max-width: 80px;
+    margin-left: 20px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .signup-btn {
+    margin-right: 20px;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  /* Adjust styles for screens up to 600px wide (e.g., mobile devices) */
+  .banner .text {
+    font-size: 9px;
+    position: absolute;
+    top:42%;
+    left:40%;
+  }
+  .banner {
+       height: 150px; /* Adjusted height */
+    
+  }
+
+ .logo img {
+   margin-top:25px;
+    max-width: 120px;
+    margin-left: 0px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .signup-btn {
+    margin-right: 20px;
+  }
+}
+
+ @media only screen and (max-width: 768px) {
+
+   
+    h2 {
+      font-size: 20px;
+      margin-top: 40px; /* Adjust margin for smaller devices */
+    }
+  }
+   /* Menu button for mobile view */
+  /* Menu button for mobile view */
+  .menu-btn {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
+    margin-right: 20px; /* Increased margin from the right */
+  }
+
+  .menu-icon {
+    width: 30px;
+    height: 5px;
+    background-color: black;
+    margin: 6px auto;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Menu options for mobile view */
+  .menu-options {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: #ffffff;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    margin: 35px  ; /* Adjust margin */
+  }
+
+  .menu-options hr {
+    margin: 15px 0; /* Adjust margin for horizontal lines */
+    border: none;
+    border-top: 1px solid #ccc; /* Add horizontal line */
+  }
+
+  .menu-options a {
+    display: block;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+  }
+
+  .menu-options a:hover {
+    background-color: #2642B6;
+  }
+/* Show menu options when menu button is clicked */
+.menu-btn.active .menu-icon:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-btn.active .menu-icon:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active .menu-icon:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.menu-btn.active + .menu-options {
+  display: block;
+}
+
+
+
+
+  /* Media query for mobile view */
+  @media only screen and (max-width: 768px) {
+    .logo {
+      margin-left: 10px;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .login-btn,
+    .signup-btn {
+      display: none;
+    }
+
+    .menu-btn {
+      display: block;
+    }
+
+    .menu-options {
+      display: none;
+    }
+  }
+
+
+</style>
+</head>
+
+<header>
+  <div class="logo">
+    <img margin-top:-30 style="width:250%" src="1.png" alt="Logo">
+  </div>
+ 
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Courses.html">Courses</a>
+    <a href="AboutUs.html">About</a>
+    <a href="ContactUs.html">Contact</a>
+    <a href="AdminLog.html">Admin</a>
+  </nav>
+    <a href="loginform.html" class="signup-btn">Login / Sign Up</a>
+  </div>
+
+  <!-- Menu button for mobile view -->
+  <button class="menu-btn" onclick="toggleMenu()">
+    <div class="menu-icon"></div>
+    <div class="menu-icon"></div>
+    <div class="menu-icon"></div>
+  </button>
+
+
+  <div class="menu-options" id="menuOptions">
+   <a href="index.html">HOME</a>
+    <a href="Courses.html">COURSES</a>
+    <a href="AboutUs.html">ABOUT</a>
+    <a href="ContactUs.html">CONTACT US</a>
+    <a href="AdminLog.html">ADMIN</a>
+    <a href="loginform.html">LOGIN/SIGNUP</a>
+  </div>
+
+<script>
+  // Function to toggle the display of menu options on mobile view
+  function toggleMenu() {
+    var menuOptions = document.getElementById('menuOptions');
+    if (menuOptions.style.display === 'block') {
+      menuOptions.style.display = 'none';
+    } else {
+      menuOptions.style.display = 'block';
+    }
+  }
+
+  // Close the menu if clicked outside of menu options
+  document.addEventListener('click', function(event) {
+    var menuOptions = document.getElementById('menuOptions');
+    var menuBtn = document.querySelector('.menu-btn');
+
+    // Check if the clicked element is not part of the menu or menu button
+    if (!menuOptions.contains(event.target) && !menuBtn.contains(event.target)) {
+      // Close the menu if it's open
+      if (menuOptions.style.display === 'block') {
+        menuOptions.style.display = 'none';
+      }
+    }
+  });
+</script>
+</header>
+<body>
+
+<div class="container">
+  <h2 style="text-align: center;">Enrollment Form</h2>
+  <form action="submit_enrollment.php" method="post">
+    <input type="text" name="name" placeholder="Name" required><br>
+    <input type="text" name="education" placeholder="Education" required><br>
+    <input type="text" name="branch" placeholder="Branch" required><br>
+    <input type="number" name="percentage" placeholder="B.Tech Percentage" required><br>
+    <input type="number" name="passed_out_year" placeholder="B.Tech Passed Out Year" required><br>
+    <select name="course" required>
+      <option value="" disabled selected>Select Course</option>
+      
+      <option value="AWS">AWS</option>
+     
+    </select><br>
+    <h3 style="text-align: center;">Payment Options</h3>
+    <!-- Add payment options here -->
+      <a href="https://rzp.io/l/emX7zvc" class="btn" >Proceed to Payment</a>
+   
+  </form>
+</div>
+
+</body>
+</html>

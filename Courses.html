@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Stack Web Development Course</title>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 80px 0; /* Added padding to prevent overlap */
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  /* Style for the main container */
+  .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  
+    
+  }
+
+  /* Style for the card container */
+  .card {
+    width: calc(50% - 10px);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .card:hover {
+    transform: scale(1.03);
+  }
+
+  /* Style for the card content */
+  .card-content {
+    padding: 20px;
+  }
+
+  /* Style for the course title */
+  .course-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #007bff;
+    text-transform: uppercase;
+  }
+
+  /* Style for the course details */
+  .course-details {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  /* Style for the tick points */
+  .tick {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  .tick::before {
+    content: "\2713"; /* Checkmark Unicode character */
+    font-size: 18px;
+    margin-right: 5px;
+    color: #007bff;
+  }
+
+  /* Style for the job assistance */
+  .job-assistance {
+    font-size: 16px;
+    color: #555;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  /* Style for the button */
+  .btn {
+    display: block;
+    margin: 20px auto; /* Add margin to center the button and create space */
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: #0056b3;
+  }
+
+  /* Style for the dropdown container */
+  .dropdown-container {
+    width: calc(50% - 10px);
+    margin: 0 10px;
+  }
+
+  /* Style for the dropdown */
+  .dropdown {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 100px;
+    cursor: pointer;
+    background-color:#f0f0f0;
+  }
+
+  /* Style for the dropdown options */
+  .dropdown-options {
+    display: none;
+    padding: 20px  ;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f0f0f0; /* Grey background color */
+    
+    
+  }
+
+  .dropdown-options.active {
+    display: block;
+     margin-top:-90px;
+  }
+
+  /* Style for the curriculum cards */
+  .curriculum-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+
+  .curriculum-card-content {
+    padding: 20px;
+    
+  }
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensure header is on top of other content */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  }
+
+  .logo {
+     margin-top:-110px;
+    max-height: 50px;
+    margin-left: 150px; /* Move the logo to the right by 40 pixels */
+    max-width: 80px;
+  }
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+
+  /* Style for the login and signup buttons */
+  .login-btn,
+  .signup-btn {
+     
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .signup-btn {
+     margin-right: 150px; 
+    }
+
+  .login-btn {
+    background-color: transparent;
+    color: black;
+  }
+
+  .signup-btn {
+    background-color: #007bff;
+    color: white;
+  }
+
+ /* Footer Styling */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom:-90px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+ .popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  /* Adjust styles for screens up to 768px wide (e.g., tablets and smaller desktops) */
+  .banner .text {
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .section {
+    padding: 10px;
+  }
+
+  .left-column, .right-column {
+    padding: 10px;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer img {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  footer .footer-section {
+    margin-bottom: 20px;
+  }
+
+
+.dropdown-container {
+  width: 100%;
+}
+
+.dropdown-options {
+  display: none;
+}
+
+.dropdown-options.active {
+  display: block;
+}.container {
+  width: 100%;
+  padding: 20px;
+}
+
+.card {
+  width: calc(100% - 10px);
+  margin: 0 10px;
+}
+
+.dropdown {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top:5px;
+    cursor: pointer;
+    background-color:#f0f0f0;
+  }
+
+   .dropdown-options.active {
+    display: block;
+     margin-top:0px;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  /* Adjust styles for screens up to 600px wide (e.g., mobile devices) */
+  .banner .text {
+    font-size: 16px;
+  }
+
+  .logo img {
+    max-width: 80px;
+    margin-left: 20px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .signup-btn {
+    margin-right: 20px;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  /* Adjust styles for screens up to 600px wide (e.g., mobile devices) */
+  .banner .text {
+    font-size: 9px;
+    position: absolute;
+    top:42%;
+    left:40%;
+  }
+  .banner {
+       height: 150px; /* Adjusted height */
+    
+  }
+
+.logo img {
+   margin-top:25px;
+    max-width: 120px;
+    margin-left: 0px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .signup-btn {
+    margin-right: 20px;
+  }
+}
+
+ @media only screen and (max-width: 768px) {
+
+   
+    h2 {
+      font-size: 20px;
+      margin-top: 40px; /* Adjust margin for smaller devices */
+    }
+  }
+   /* Menu button for mobile view */
+   /* Menu button for mobile view */
+  .menu-btn {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
+    margin-right: 20px; /* Increased margin from the right */
+  }
+
+  .menu-icon {
+    width: 30px;
+    height: 5px;
+    background-color: black;
+    margin: 6px auto;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Menu options for mobile view */
+  .menu-options {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: #ffffff;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    margin: 35px  ; /* Adjust margin */
+  }
+
+  .menu-options hr {
+    margin: 15px 0; /* Adjust margin for horizontal lines */
+    border: none;
+    border-top: 1px solid #ccc; /* Add horizontal line */
+  }
+
+  .menu-options a {
+    display: block;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+  }
+
+  .menu-options a:hover {
+    background-color: #2642B6;
+  }
+/* Show menu options when menu button is clicked */
+.menu-btn.active .menu-icon:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-btn.active .menu-icon:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active .menu-icon:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.menu-btn.active + .menu-options {
+  display: block;
+}
+
+
+
+
+
+  /* Media query for mobile view */
+  @media only screen and (max-width: 768px) {
+    .logo {
+      margin-left: 10px;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .login-btn,
+    .signup-btn {
+      display: none;
+    }
+
+    .menu-btn {
+      display: block;
+    }
+
+    .menu-options {
+      display: none;
+    }
+  }
+.course-image {
+    width: 5em; /* Adjust the size as needed */
+    height: auto;
+    vertical-align: middle; /* Align the image vertically with text */
+    margin-left: 5px; /* Optional: Add margin for spacing */
+  }
+.fixed{
+    width: 50px;
+    height: 50px;
+    padding: 20px;
+    position: fixed;
+    right: 0%;
+    bottom: 20px;
+    color: #25d366;
+  }
+  body{
+    height: 1500px;
+  }
+.whatsapp-floter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.whatsapp-floter img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.whatsapp-floter img:hover {
+  transform: scale(1.1);
+}
+
+</style>
+</head>
+
+<header>
+  <div class="logo">
+    <img margin-top:-30 style="width:250%" src="1.png" alt="Logo">
+  </div>
+ 
+
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="Courses.html">COURSES</a>
+    <a href="AboutUs.html">ABOUT</a>
+    <a href="ContactUs.html">CONTACT US</a>
+    <a href="AdminLog.html">ADMIN</a>
+  </nav>
+    <a href="loginform.html" class="signup-btn" target="_blank">Login / Sign Up</a>
+  </div>
+
+  <!-- Menu button for mobile view -->
+  <button class="menu-btn" onclick="toggleMenu()">
+    <div class="menu-icon"></div>
+    <div class="menu-icon"></div>
+    <div class="menu-icon"></div>
+  </button>
+
+
+  <div class="menu-options" id="menuOptions">
+   <a href="index.html">HOME</a>
+    <a href="Courses.html">COURSES</a>
+    <a href="AboutUs.html">ABOUT</a>
+    <a href="ContactUs.html">CONTACT US</a>
+    <a href="AdminLog.html">ADMIN</a>
+    <a href="loginform.html" target="_blank">LOGIN/SIGNUP</a>
+  </div>
+
+<script>
+  // Function to toggle the display of menu options on mobile view
+  function toggleMenu() {
+    var menuOptions = document.getElementById('menuOptions');
+    if (menuOptions.style.display === 'block') {
+      menuOptions.style.display = 'none';
+    } else {
+      menuOptions.style.display = 'block';
+    }
+  }
+
+  // Close the menu if clicked outside of menu options
+  document.addEventListener('click', function(event) {
+    var menuOptions = document.getElementById('menuOptions');
+    var menuBtn = document.querySelector('.menu-btn');
+
+    // Check if the clicked element is not part of the menu or menu button
+    if (!menuOptions.contains(event.target) && !menuBtn.contains(event.target)) {
+      // Close the menu if it's open
+      if (menuOptions.style.display === 'block') {
+        menuOptions.style.display = 'none';
+      }
+    }
+  });
+</script>
+</header>
+
+<body>
+    <div class="popup-overlay" id="popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">×</span>
+    <h2>Book a Free Demo Class Now</h2>
+   
+    <a href="DemoForm.html" class="btn" >Book Now</a>
+  </div>
+</div>
+
+    <script >
+
+ function openPopup() {
+    document.getElementById("popup").style.display = "flex";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+document.addEventListener("DOMContentLoaded", function() {
+    var popupOverlay = document.querySelector(".popup-overlay");
+    var bookNowBtn = document.getElementById("bookNowBtn");
+
+    // Show popup when the page loads
+    popupOverlay.style.display = "flex";
+
+    // Redirect to new page when "Book Now" button is clicked
+    bookNowBtn.addEventListener("click", function() {
+        window.location.href = "demo-class-page.html"; // Change to the URL of your demo class page
+    });
+});
+
+</script>
+
+
+</body>
+<body>
+
+<div class="container">
+  <!-- Main card for Full Stack Web Development course -->
+  <div class="card">
+    <div class="card-content" >
+      <h2 class="course-title">Full Stack Web Development<img src="OFF.png" alt="Course Image" class="course-image"></h2>
+      <p class="course-details">Duration: 6 Months</p>
+      <div class="tick">Learn from Scratch</div>
+      <div class="tick">25+ real-world portfolio projects</div>
+      <div class="tick">Complete frontend dev with ReactJS</div>
+      <div class="tick">Backend dev in Express & NodeJS</div>
+      <div class="tick">Database skills with MongoDB</div>
+      <div class="tick">100% job assistance</div>
+      
+      <a href="FullStack.html" class="btn" style="display: block; margin: 0 auto; padding: 10px 20px; text-align: center; text-decoration: none;">Enroll Now at just 14999/-</a>
+ 
+     
+    </div>
+  </div>
+
+  <!-- Dropdowns container -->
+
+   <div class="dropdown-container">
+    <div class="dropdown" onclick="toggleDropdown('frontend')">Frontend</div>
+    <div class="dropdown-options" id="frontend">
+<div class="curriculum-card">
+  <div class="curriculum-card-content">
+    <h3>Frontend Curriculum</h3>
+    <ul>
+      <li>Git</li>
+      <ul>
+        <li>Basic Command Line</li>
+        <li>Git and GitHub</li>
+        <li>Git command</li>
+        <li>Use of git status</li>
+        <li>Use of .gitignore</li>
+        <li>Git Branch</li>
+        <li>Clone and Forking the repo</li>
+      </ul>
+      <li>Figma</li>
+      <ul>
+        <li>Why do we need Design</li>
+        <li>Difference between UI/UX</li>
+        <li>Why Figma, how to use Figma</li>
+        <li>Design Tools</li>
+        <li>Practical use of Figma</li>
+        <li>Designing Component in Figma</li>
+      </ul>
+      <li>JS Fundamentals</li>
+      <ul>
+        <li>Introduction to JS</li>
+        <li>What is node, Installing NodeJS</li>
+        <li>Data structures in JS: Array, String, Set, Map, Object</li>
+        <li>Functions</li>
+        <li>Higher Order Function</li>
+        <li>Map Filter Reduce</li>
+      </ul>
+      <li>HTML, CSS, Bootstrap</li>
+      <ul>
+        <li>Introduction to web and HTML</li>
+        <li>HTML Tags & forms</li>
+        <li>Introduction to CSS</li>
+        <li>CSS Properties</li>
+        <li>CSS Box Model and Units</li>
+        <li>CSS Text formatting</li>
+        <li>CSS positioning and Pseudo elements</li>
+        <li>Intro to Flex, Flex Property</li>
+        <li>CSS gradient and Transition</li>
+        <li>CSS Grid</li>
+        <li>Introduction to Bootstrap</li>
+      </ul>
+      <li>Advanced Javascript</li>
+      <ul>
+        <li>Advanced JS Concepts</li>
+        <li>Scope</li>
+        <li>Hoisting</li>
+        <li>Closure</li>
+        <li>ES6</li>
+        <li>Promises</li>
+        <li>Async Await</li>
+      </ul>
+      <li>DOM</li>
+      <ul>
+        <li>What is DOM</li>
+        <li>Creating an Element</li>
+        <li>Appending child to a parent element</li>
+        <li>Removing a child element from a parent node</li>
+        <li>Event Listeners</li>
+      </ul>
+      <li>BOM</li>
+      <ul>
+        <li>Browser Object Model</li>
+        <li>BOM Examples</li>
+        <li>Location</li>
+        <li>Navigator</li>
+        <li>Storage</li>
+        <li>Local storage</li>
+        <li>Session storage</li>
+        <li>Cookies</li>
+      </ul>
+      <li>OOPS</li>
+      <ul>
+        <li>Introduction to Classes and Objects</li>
+        <li>Introduction to constructors</li>
+        <li>Functions (Methods in classes)</li>
+        <li>Constructor Overloading and Method Overloading</li>
+        <li>Use of Static Keyword</li>
+        <li>Inheritance</li>
+        <li>Public, Private for instance variables and methods</li>
+        <li>Overriding</li>
+        <li>this (context)</li>
+        <li>call apply bind</li>
+      </ul>
+      <li>Projects</li>
+      <ul>
+        <li>Github Finder</li>
+        <li>Dictionary app</li>
+        <li>Meal finder</li>
+        <li>Real-time Weather app</li>
+        <li>Random Quote Generator</li>
+        <li>Crypto Tracker</li>
+        <li>Photo gallery app</li>
+        <li>Frontend in ReactJS</li>
+      </ul>
+      <li>6 WEEKS</li>
+      <ul>
+        <li>React Introduction</li>
+        <li>JS Refresher</li>
+        <li>React - what why and where</li>
+        <li>Create Hello World in React using CDN</li>
+        <li>React lifecycle Methods</li>
+        <li>Introduce useEffect</li>
+        <li>Fetching API using useEffect</li>
+        <li>Different lifecycle method</li>
+        <li>Create Quiz app using useEffect</li>
+      </ul>
+      <li>JSX, Props and States</li>
+      <ul>
+        <li>Introduction to JSX</li>
+        <li>Props in React</li>
+        <li>State in React</li>
+        <li>JSX & Props in practice</li>
+        <li>State & Event Handling</li>
+        <li>Best Practices for using JSX, Props and State</li>
+      </ul>
+      <li>More about React</li>
+      <ul>
+        <li>Intro to Routing</li>
+        <li>Context API</li>
+        <li>Redux</li>
+        <li>Cla</li>
+      </ul>
+    </ul>
+  </div>
+</div>
+</div>
+
+
+<!-- Backend Curriculum Card -->
+<div class="dropdown" onclick="toggleDropdown('backend')">Backend</div>
+    <div class="dropdown-options" id="backend">
+<div class="curriculum-card">
+  <div class="curriculum-card-content">
+    <h3>Backend Curriculum</h3>
+    <ul>
+      <li>NPM</li>
+      <ul>
+        <li>Introduction to NPM</li>
+        <li>Installing NPM</li>
+        <li>Creating a package.json file</li>
+        <li>Updating and Uninstalling Packages</li>
+        <li>Best Practices for using NPM</li>
+        <li>Using <a href="https://www.npmjs.com/" target="_blank">https://www.npmjs.com/</a></li>
+      </ul>
+      <li>REST APIs</li>
+      <ul>
+        <li>HTTP Methods</li>
+        <li>Resources and Endpoints</li>
+        <li>Resource Representations</li>
+        <li>HTTP Status Codes</li>
+        <li>URI Design</li>
+        <li>Request/Response Format</li>
+      </ul>
+      <li>Express.js</li>
+      <ul>
+        <li>Express Setup</li>
+        <li>Creating first server</li>
+        <li>Understanding REST</li>
+        <li>Understanding the request and Response Object</li>
+        <li>Responding with HTML</li>
+        <li>Asynchronous vs Synchronous</li>
+        <li>Sending HTML files with express</li>
+        <li>Static assets with express</li>
+      </ul>
+      <li>CRUD Operation</li>
+      <ul>
+        <li>Find, Find All, Find Some</li>
+        <li>Query, Filter with Regular Expression</li>
+        <li>Sort, Sort Descending</li>
+        <li>Delete, Delete Many</li>
+        <li>Drop Collection</li>
+        <li>Limit the result</li>
+        <li>Join Collections</li>
+      </ul>
+      <li>MongoDB</li>
+      <ul>
+        <li>Create Database</li>
+        <li>Create Collection</li>
+        <li>Insert into Collection</li>
+        <li>Result Object</li>
+      </ul>
+      <li>Interview Preparation</li>
+      <ul>
+        <li>Resume Building</li>
+        <li>Linkedin Building</li>
+        <li>Github</li>
+        <li>HR Interview Discussion</li>
+      </ul>
+      <li>Practice Marathon</li>
+      <ul>
+        <li>DSA</li>
+        <li>JS</li>
+        <li>React</li>
+        <li>Node</li>
+      </ul>
+      <li>Mock Interviews</li>
+      <ul>
+        <li>DSA</li>
+        <li>Frontend</li>
+        <li>Backend</li>
+        <li>HR Round</li>
+      </ul>
+      <li>Capstone Project</li>
+      <ul>
+        <li>Project Planning</li>
+        <li>Agile</li>
+        <li>Team work</li>
+        <li>Deployment</li>
+        <li>Presentation</li>
+      </ul>
+      <li>Stack & Queue</li>
+      <ul>
+        <li>Stack Implementation</li>
+        <li>Problems Solving on Stack</li>
+        <li>Queue Implementation</li>
+        <li>Problems Solving on Queue</li>
+      </ul>
+      <li>HashMaps & Priority Queue</li>
+      <ul>
+        <li>Why HashMaps</li>
+        <li>Inbuilt HashMaps</li>
+        <li>Implement HashMaps</li>
+        <li>Heap and Priority Queue</li>
+      </ul>
+      <li>Linked List</li>
+      <ul>
+        <li>What are Data Structures</li>
+        <li>ArrayList</li>
+        <li>LinkedList Implementation</li>
+        <li>Collection's LL</li>
+        <li>Doubly LL</li>
+        <li>Questions on LL</li>
+      </ul>
+      <li>Recursion & Backtracking</li>
+      <ul>
+        <li>Recursion</li>
+        <li>Recursion Problems</li>
+        <li>Master theorem</li>
+        <li>Backtracking</li>
+      </ul>
+      <li>Tree</li>
+      <ul>
+        <li>Intro To Binary Trees</li>
+        <li>Standard Problems</li>
+        <li>Traversals</li>
+        <li>Construct Tree</li>
+        <li>Intro to BST</li>
+      </ul>
+      <li>Graph & Trie</li>
+      <ul>
+        <li>Introduction to Graph Algorithms</li>
+        <li>Graph Representation</li>
+        <li>Graph Traversal</li>
+        <li>Shortest Paths</li>
+        <li>Spanning Trees</li>
+      </ul>
+      <li>Dynamic Programming</li>
+      <ul>
+        <li>What is Dynamic Programming</li>
+        <li>Characteristics of Dynamic Programming - Overlapping Subproblems, Optimal Substructure Property</li>
+        <li>Dynamic Programming Methods - Top-down with Memoization, Bottom-up with Tabulation</li>
+        <li>Different DP Patterns - 0/1 Knapsack, Unbounded Knapsack, Fibonacci Numbers, Palindromic Subsequence, Longest Common Substring</li>
+      </ul>
+    </ul>
+  </div>
+</div>
+</div>
+
+
+<div class="dropdown" onclick="toggleDropdown('datastructures')">Data Structures</div>
+    <div class="dropdown-options" id="datastructures">
+<!-- Data Structures Curriculum Card -->
+<div class="curriculum-card">
+  <div class="curriculum-card-content">
+    <h3>Data Structures Curriculum</h3>
+    <ul>
+      <li>Introduction to programming language</li>
+      <ul>
+        <li>Variables</li>
+        <li>Input and Output</li>
+        <li>DataTypes - byte, int, char, float, double, short, long, string</li>
+        <li>Operators</li>
+        <ul>
+          <li>Arithmetic Operators</li>
+          <li>Assignment Operators</li>
+          <li>Relational Operators</li>
+          <li>Logical Operators</li>
+        </ul>
+        <li>Conditional Statements</li>
+        <ul>
+          <li>if-else</li>
+          <li>Nested if-else</li>
+          <li>Switch statement</li>
+        </ul>
+        <li>Functions</li>
+        <ul>
+          <li>Built-in functions</li>
+          <li>User-defined functions</li>
+          <li>Return Statement</li>
+        </ul>
+        <li>Loops</li>
+        <ul>
+          <li>Types of Loops - For, While, Do-while</li>
+          <li>Nested Loops</li>
+          <li>Break Statement</li>
+          <li>Continue Statement</li>
+          <li>Pattern</li>
+        </ul>
+        <li>Basics of Arrays</li>
+        <ul>
+          <li>Printing Array Elements</li>
+          <li>Find and Searching in Array</li>
+          <li>Count and Storing Information</li>
+          <li>Updating Array Elements</li>
+          <li>Pattern</li>
+        </ul>
+        <li>Time Complexity</li>
+        <ul>
+          <li>Constant time complexity</li>
+          <li>Logarithmic time complexity</li>
+          <li>Linear time complexity</li>
+          <li>Quadratic time complexity</li>
+          <li>Exponential time complexity</li>
+        </ul>
+      </ul>
+      <li>Arrays</li>
+      <ul>
+        <li>Subarrays</li>
+        <li>Two Pointers</li>
+        <li>Prefix Array</li>
+        <li>Kadane's algorithm</li>
+        <li>Array as hashmap</li>
+      </ul>
+      <li>Collections</li>
+      <ul>
+        <li>ArrayList</li>
+        <li>Stack</li>
+        <li>Hashmap</li>
+        <li>Queue</li>
+        <li>Priority Queue</li>
+      </ul>
+      <li>2D Arrays</li>
+      <ul>
+        <li>Traversals</li>
+        <li>Transformation</li>
+        <li>Modification</li>
+        <li>2D Array Rotation</li>
+        <li>2D Array in real life</li>
+      </ul>
+      <li>Strings</li>
+      <ul>
+        <li>Searching in string</li>
+        <li>Substrings</li>
+        <li>String Misc.</li>
+        <li>Frequency Hashmap</li>
+        <li>String Maths</li>
+      </ul>
+      <li>Searching</li>
+      <ul>
+        <li>Linear Search</li>
+        <li>Binary Search</li>
+      </ul>
+      <li>Sorting</li>
+      <ul>
+        <li>Bubble Sort</li>
+        <li>Selection Sort</li>
+        <li>Insertion Sort</li>
+        <li>Inbuilt Sort</li>
+      </ul>
+    </ul>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div class="container">
+  <!-- Main card for AWS course -->
+  <div class="card">
+    <div class="card-content">
+      <h2 class="course-title">AWS<img src="OFF.png" alt="Course Image" class="course-image"></h2>
+      <p class="course-details">Duration: 3 Months</p>
+      <div class="tick">Learn from Scratch</div>
+      <div class="tick">25+ real-world portfolio projects</div>
+      
+      <div class="tick">Database skills with MYSQL</div>
+     <div class="tick">100% job assistance</div>
+      
+      <a href="AWS.html" class="btn" style="display: block; margin: 0 auto; padding: 10px 20px; text-align: center; text-decoration: none;">Enroll Now at just 7999/-</a>
+ 
+     
+    </div>
+  </div>
+
+   <!-- Dropdowns container -->
+
+   <div class="dropdown-container">
+    <div class="dropdown" onclick="toggleDropdown('AWS')">AWS</div>
+    <div class="dropdown-options" id="AWS">
+<div class="curriculum-card">
+  <div class="curriculum-card-content">
+    <h3>AWS Curriculum</h3>
+      <ul>
+      <li>What is Cloud?</li>
+      <ul>
+        <li>Types of Cloud</li>
+      </ul>
+      <li>Types of Cloud Services</li>
+      <ul>
+        <li>Infrastructure as a Service (IaaS)</li>
+        <li>Platform as a Service (PaaS)</li>
+        <li>Software as a Service (SaaS)</li>
+      </ul>
+      <li>Advantages of Cloud Computing</li>
+      <li>Difference between On-premises and Cloud</li>
+      <li>Services offered by different Cloud providers</li>
+      <li>What is AWS?</li>
+      <ul>
+        <li>AWS - The World's Largest Cloud Provider</li>
+        <li>Different services offered by AWS</li>
+        <li>How to create an AWS account?</li>
+      </ul>
+      <li>Introduction to AWS Services</li>
+      <li>What is a Region?</li>
+      <li>What is an Availability Zone?</li>
+    </ul>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="container">
+  <!-- Main card for DEVOPS course -->
+  <div class="card">
+    <div class="card-content">
+      <h2 class="course-title">DEVOPS<img src="OFF.png" alt="Course Image" class="course-image"></h2>
+      <p class="course-details">Duration: 3 Months</p>
+      <div class="tick">Learn from Scratch</div>
+      <div class="tick">25+ real-world portfolio projects</div>
+      
+      <div class="tick">Database skills with MYSQL</div>
+      <p class="job-assistance">100% job assistance</p>
+      
+      <a href="Devops.html" class="btn" style="display: block; margin: 0 auto; padding: 10px 20px; text-align: center; text-decoration: none;">Enroll Now at just 7699/-</a>
+ 
+     
+    </div>
+  </div>
+
+   <!-- Dropdowns container -->
+
+   <div class="dropdown-container">
+    <div class="dropdown" onclick="toggleDropdown('DEVOPS')">DEVOPS</div>
+    <div class="dropdown-options" id="DEVOPS">
+<div class="curriculum-card">
+  <div class="curriculum-card-content">
+   <h3>DEVOPS Curriculum</h3>
+      <ul>
+      <li>DevOps Essentials </li>
+      <ul>
+        <li>Why DevOps?</li>
+        <li>What is DevOps?</li>
+        <li>Agile and DevOps</li>
+        <li>DevOps Lifecycle</li>
+        <li>DevOps Market Trends</li>
+        <li>DevOps Delivery Pipeline</li>
+
+        <li>DevOps Ecosystem & Use Case</li>
+        <li>Introduction to Virtualization </li>
+        <li>Introduction to Cloud Computing  </li>
+      </ul>
+      <li> Understanding and Using Build Tools</li>
+      <ul>
+        <li>Overview of Various Build tools</li>
+        <li>What is Maven?</li>
+        <li>Maven Plugins </li>
+        <li>Maven Archetypes</li>
+        <li>Project Object Model (POM)</li>
+        <li>Source Control Integration </li>
+      </ul>
+      <li> Containerization Basics Using Docker </li>
+      <ul>
+        <li>What and Why of Containers</li>
+        <li>Difference between VMs and Containers</li>
+        <li>Docker Architecture and Components </li>
+        <li>Image Distribution using Docker Hub </li>
+        <li>Working with Containers and Docker Hub </li>
+      </ul>
+      <li> Continuous Integration and Delivery
+        Using Jenkins </li>
+      <ul>
+        <li>Overview of Continuous Integration </li>
+        <li>Overview of Jenkins </li>
+        <li>Jenkins architecture</li>
+        <li>Installing and Configuring Jenkins </li>
+        <li>Jenkins Management</li>
+        <li>Jenkins Build Pipeline </li>
+      </ul>
+      
+      <li> Continuous Testing</li>
+      <ul>
+        <li>Overview of Continuous Testing</li>
+        <li>Software Testing Life cycle </li>
+        <li>Different Types of Testing </li>
+        <li>Test -Driven Development Approach using J unit </li>
+        <li>Testing Web Applications using Selenium </li>
+        <li>Working with A pace J Meter and Blaze Meter for Performance
+          Testing</li>
+      </ul>
+      <li>Docker Commands and Use-Cases</li>
+      <ul>
+        <li>Docker Files</li>
+        <li>Docker Compose</li>
+        <li>Docker Networking</li>
+        <li>Docker Swarm</li>
+      </ul>
+      <li>Introduction to Kubernetes</li>
+      <ul>
+        <li>Basics of Kubernetes container orchestration</li>
+        <li>Differences between Docker Swarm and Kubernetes </li>
+        <li>Kubernetes Architecture</li>
+        <li>Installing Kubernetes using Kubeadm</li>
+        <li>Creating Pods and Deployments using YAML </li>
+        <li>Selectors & Labels in Kubernetes</li>
+        <li>Using ReplicaSets & Rolling Updates</li>
+        <li>Scheduling the applications on the container</li>
+        <li>Services in Kubernetes </li>
+
+      </ul>
+      <li> Configuration Management Using
+        Ansible </li>
+      <ul>
+        <li>Overview of Configuration Management </li>
+        <li>Introduction to Ansible </li>
+        <li>Ansible Architecture</li>
+        <li>Ansible Components</li>
+        <li>Installation & Configuration </li>
+        <li>Writing Ansible Playbooks</li>
+        <li>Working with Ansible variables</li>
+        <li>Working with Ansible Modules </li>
+        <li>Creating Roles using Ansible Galaxy</li>
+      </ul>
+      <li> Continuous Monitoring Using
+        Prometheus, Graf Ana and ELK </li>
+        <ul>
+          <li>Overview of Logging and Monitoring</li>
+          <li>Exploring Logs-Kubernetes</li>
+          <li>Monitoring using Prometheus and Graf Ana</li>
+          <li>Working with ELK</li>
+        </ul>
+    </ul>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="container">
+  <!-- Main card for Data SCIENCE course -->
+  <div class="card">
+    <div class="card-content">
+      <h2 class="course-title">Data Science<img src="OFF.png" alt="Course Image" class="course-image"></h2>
+      <p class="course-details">Duration: 8 Months</p>
+      <div class="tick">Learn from Scratch</div>
+      <div class="tick">40+ real-world portfolio projects</div>
+      <div class="tick">Programming in python with large data sets</div>
+      <div class="tick">Database skills with MYSQL</div>
+      <p class="job-assistance">100% job assistance</p>
+      
+      <a href="DataScience.html" class="btn" style="display: block; margin: 0 auto; padding: 10px 20px; text-align: center; text-decoration: none;">Enroll Now at just 9999/-</a>
+ 
+     
+    </div>
+  </div>
+
+   <!-- Dropdowns container -->
+
+   <div class="dropdown-container">
+    <div class="dropdown" onclick="toggleDropdown('Data SCIENCE')">Data Science</div>
+    <div class="dropdown-options" id="Data SCIENCE">
+<div class="curriculum-card">
+  <div class="curriculum-card-content">
+    <h3>Data analytics and Visualization</h3>
+      <ul>
+      <li> Introduction to Data Science</li>
+      <ul>
+        <li>Linear algebra
+        </li>
+        <li>Calculus
+        </li>
+        <li>Probability and statistics
+        </li>
+      </ul>
+      <li>Data Manipulation and Analysis
+      </li>
+      <ul>
+        <li>Handling missing values
+        </li>
+        <li>Data normalization and standardization
+        </li>
+        <li>Exploratory Data Analysis (EDA)
+        </li>
+      </ul>
+      <li>Data Visualization</li>
+      <ul>
+        
+        <li>Matplotlib
+        </li>
+        <li>Seaborn
+        </li>
+        <li>Plotly
+        </li>
+        <li>Data Wrangling</li>
+        <li>Data transformation and feature engineering
+        </li>
+      </ul>
+      <li>Machine Learning</li>
+      <li>Supervised Learning</li>
+      <ul>
+        <li>Regression (Linear, Polynomial)
+        </li>
+        <li>Classification (Logistic Regression, Decision Trees, Random Forest, SVM)
+        </li>
+        <li>Unsupervised Learning</li>
+        <li> Clustering (K-means, Hierarchical Clustering)
+        </li>
+        <li>Dimensionality Reduction (PCA, t-SNE)
+        </li>
+      </ul>
+      <li>Deep Learning</li>
+      <li>Neural Networks</li>
+      <ul>
+        <li>Basics of deep learning
+        </li>
+        <li>Frameworks like TensorFlow or PyTorch
+        </li>
+      </ul>
+      <li>Big Data Technologies</li>
+      <li>Databases</li>
+      <ul>
+        <li>SQL (for querying relational databases)
+        </li>
+        <li>NoSQL databases (MongoDB, Cassandra)
+        </li>
+        <li>Distributed Computing</li>
+        <li> Hadoop, Spark
+        </li>
+      </ul>
+      <li>Advanced Topics
+      </li>
+      <li>Natural Language Processing (NLP)</li>
+      <ul>
+        <li>Text processing
+        </li>
+        <li>Sentiment analysis
+        </li>
+        <li>Named Entity Recognition (NER)
+        </li>
+        <li>Time Series Analysis</li>
+        <li>Forecasting
+        </li>
+        <li>Seasonality and trends
+        </li>
+        <li>Reinforcement Learning</li>
+        <li>Markov Decision Processes
+        </li>
+        <li>Q-Learning
+        </li>
+      </ul>
+      <li>Real-world Applications and Projects
+      </li>
+      <ul>
+        <li>Kaggle Competitions</li>
+        <li>Participate in data science competitions
+        </li>
+        <li>Collaborate with others and learn from solutions
+  
+        </li>
+        <li>Capstone Projects</li>
+        <li>Apply learned skills to real-world projects
+        </li>
+        <li>Build a portfolio of data science projects
+        </li>
+        
+      </ul>
+      <li>Continuous Learning
+      </li>
+      <ul>
+        <li>Stay Updated
+        </li>
+        <li>Follow blogs, forums, and research papers
+        </li>
+        <li>Attend workshops and webinars
+        </li>
+        <li>Join Data Science Communities</li>
+        <li>Engage in discussions
+        </li>
+        <li>Seek mentorship
+        </li>
+        <li>Networking: Connect with professionals in the field and seek advice.
+        </li>
+        
+      </ul>
+    </ul>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<script>
+  function toggleDropdown(id) {
+    var dropdownOptions = document.getElementById(id);
+    dropdownOptions.classList.toggle('active');
+  }
+</script>
+
+
+</body>
+<div class="whatsapp-floter">
+  <a href="https://api.whatsapp.com/send?phone=7382766952" target="_blank">
+    <img src="whatsapp.jpeg" alt="WhatsApp Icon">
+  </a>
+</div>
+
+<footer>
+        <div class="footer-links">
+            <a href="Courses.html">Courses</a>
+            <a href="ContactUs.html">Contact Us</a>
+            <a href="AboutUs.html">About</a>
+            
+            <a href="#">Support</a>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2024 EasyTutor. All rights reserved.</p>
+        </div>
+    </footer>
+
+</html>

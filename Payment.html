@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('back.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .price-breakdown {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+  }
+  .payment-option {
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type="text"],
+  input[type="number"] {
+    width: calc(100% - 22px); /* Adjusted for input padding and border */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  .terms {
+    margin-top: 20px;
+  }
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensure header is on top of other content */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  }
+
+ .logo {
+     margin-top:-110px;
+    max-height: 50px;
+    margin-left: 150px; /* Move the logo to the right by 40 pixels */
+    max-width: 80px;
+  }
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+
+  /* Style for the login and signup buttons */
+  .login-btn,
+  .signup-btn {
+     
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .signup-btn {
+     margin-right: 150px; 
+    }
+
+  .login-btn {
+    background-color: transparent;
+    color: black;
+  }
+
+  .signup-btn {
+    background-color: #007bff;
+    color: white;
+  }
+
+ /* Footer Styling */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 80px 0; /* Added padding to prevent overlap */
+    background-color: #f8f9fa;
+    color: #333;
+  }
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  /* Adjust styles for screens up to 768px wide (e.g., tablets and smaller desktops) */
+  .banner .text {
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .section {
+    padding: 10px;
+  }
+
+  .left-column, .right-column {
+    padding: 10px;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer img {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  footer .footer-section {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  /* Adjust styles for screens up to 600px wide (e.g., mobile devices) */
+  .banner .text {
+    font-size: 16px;
+  }
+
+  .logo img {
+    max-width: 80px;
+    margin-left: 20px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .signup-btn {
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  /* Adjust styles for screens up to 600px wide (e.g., mobile devices) */
+  .banner .text {
+    font-size: 9px;
+    position: absolute;
+    top:42%;
+    left:40%;
+  }
+  .banner {
+       height: 150px; /* Adjusted height */
+    
+  }
+
+ .logo img {
+   margin-top:25px;
+    max-width: 120px;
+    margin-left: 0px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .signup-btn {
+    margin-right: 20px;
+  }
+}
+
+ @media only screen and (max-width: 768px) {
+
+   
+    h2 {
+      font-size: 20px;
+      margin-top: 40px; /* Adjust margin for smaller devices */
+    }
+  }
+   /* Menu button for mobile view */
+   /* Menu button for mobile view */
+  .menu-btn {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
+    margin-right: 20px; /* Increased margin from the right */
+  }
+
+  .menu-icon {
+    width: 30px;
+    height: 5px;
+    background-color: black;
+    margin: 6px auto;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Menu options for mobile view */
+  .menu-options {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: #ffffff;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    margin: 35px  ; /* Adjust margin */
+  }
+
+  .menu-options hr {
+    margin: 15px 0; /* Adjust margin for horizontal lines */
+    border: none;
+    border-top: 1px solid #ccc; /* Add horizontal line */
+  }
+
+  .menu-options a {
+    display: block;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+  }
+
+  .menu-options a:hover {
+    background-color: #2642B6;
+  }
+/* Show menu options when menu button is clicked */
+.menu-btn.active .menu-icon:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-btn.active .menu-icon:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active .menu-icon:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.menu-btn.active + .menu-options {
+  display: block;
+}
+
+
+
+
+  /* Media query for mobile view */
+  @media only screen and (max-width: 768px) {
+    .logo {
+      margin-left: 10px;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .login-btn,
+    .signup-btn {
+      display: none;
+    }
+
+    .menu-btn {
+      display: block;
+    }
+
+    .menu-options {
+      display: none;
+    }
+  }
+
+
+
+</style>
+</head>
+
+<header>
+  <div class="logo">
+    <img margin-top:-30 style="width:250%" src="1.png" alt="Logo">
+  </div>
+ 
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Courses.html">Courses</a>
+    <a href="AboutUs.html">About</a>
+    <a href="ContactUs.html">Contact</a>
+    <a href="AdminLog.html">Admin</a>
+  </nav>
+    <a href="loginform.html" class="signup-btn">Login / Sign Up</a>
+  </div>
+
+  <!-- Menu button for mobile view -->
+  <button class="menu-btn" onclick="toggleMenu()">
+    <div class="menu-icon"></div>
+    <div class="menu-icon"></div>
+    <div class="menu-icon"></div>
+  </button>
+
+
+  <div class="menu-options" id="menuOptions">
+   <a href="index.html">Home</a>
+    <a href="Courses.html">Courses</a>
+    <a href="AboutUs.html">About</a>
+    <a href="ContactUs.html">Contact</a>
+    <a href="AdminLog.html">Admin</a>
+    <a href="loginform.html">Login / Sign Up</a>
+
+  </div>
+<script>
+  // Function to toggle the display of menu options on mobile view
+  function toggleMenu() {
+    var menuOptions = document.getElementById('menuOptions');
+    if (menuOptions.style.display === 'block') {
+      menuOptions.style.display = 'none';
+    } else {
+      menuOptions.style.display = 'block';
+    }
+  }
+
+  // Close the menu if clicked outside of menu options
+  document.addEventListener('click', function(event) {
+    var menuOptions = document.getElementById('menuOptions');
+    var menuBtn = document.querySelector('.menu-btn');
+
+    // Check if the clicked element is not part of the menu or menu button
+    if (!menuOptions.contains(event.target) && !menuBtn.contains(event.target)) {
+      // Close the menu if it's open
+      if (menuOptions.style.display === 'block') {
+        menuOptions.style.display = 'none';
+      }
+    }
+  });
+</script>
+</header>
+<body>
+
+<div class="container">
+  <h2>Payment Details</h2>
+
+  <div class="price-breakdown">
+    <h3>Price Breakdown</h3>
+     <p>Course Fee: ₹10000</p>
+      <p>Total 18%GST: ₹1800</p>
+    <p>Total Amount: ₹11800</p>
+    <!-- Add more details as needed -->
+  </div>
+
+  <div class="payment-option">
+    <h3>Select Payment Option</h3>
+    <label><input type="radio" name="payment" value="creditdebit"> Credit/Debit Card</label>
+    <label><input type="radio" name="payment" value="upi"> UPI</label>
+    <label><input type="radio" name="payment" value="wallet"> Wallet</label>
+  </div>
+
+  <div id="payment-form"></div>
+
+  <div class="terms">
+    <input type="checkbox" id="terms-checkbox" required>
+    <label for="terms-checkbox">By ticking this, you agree to the <a href="#">terms and conditions</a>.</label>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+    radio.addEventListener('change', function() {
+      const paymentMethod = this.value;
+      const paymentForm = document.getElementById('payment-form');
+      paymentForm.innerHTML = '';
+
+      if (paymentMethod === 'creditdebit') {
+        paymentForm.innerHTML = `
+          <div class="card">
+            <h3>Credit/Debit Card Details</h3>
+            <form action="payment_process.php" method="post">
+              <label for="cardholder-name">Cardholder Name</label>
+              <input type="text" id="cardholder-name" name="cardholder-name" placeholder="John Doe" required>
+
+              <label for="card-number">Card Number</label>
+              <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
+
+              <div style="display:flex; justify-content: space-between;">
+                <div>
+                  <label for="expiry-date">Expiry Date</label>
+                  <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" required>
+                </div>
+                <div>
+                  <label for="cvv">CVV</label>
+                  <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                </div>
+              </div>
+
+              <input type="submit" value="Pay Now">
+            </form>
+          </div>
+        `;
+      } else if (paymentMethod === 'upi') {
+        paymentForm.innerHTML = `
+          <div class="card">
+            <h3>UPI Details</h3>
+            <form action="payment_process.php" method="post">
+              <label for="upi-id">UPI ID</label>
+              <input type="text" id="upi-id" name="upi-id" placeholder="example@upi" required>
+
+              <label for="phone-number-upi">Phone Number</label>
+              <input type="text" id="phone-number-upi" name="phone-number-upi" placeholder="1234567890" required>
+
+              <input type="submit" value="Proceed to Payment">
+            </form>
+          </div>
+        `;
+      } else if (paymentMethod === 'wallet') {
+        paymentForm.innerHTML = `
+          <div class="card">
+            <h3>Wallet Details</h3>
+            <form action="payment_process.php" method="post">
+              <label for="wallet-id">Wallet ID</label>
+              <input type="text" id="wallet-id" name="wallet-id" placeholder="example@wallet" required>
+
+              <label for="phone-number-wallet">Phone Number</label>
+              <input type="text" id="phone-number-wallet" name="phone-number-wallet" placeholder="1234567890" required>
+
+              <input type="submit" value="Proceed to Payment">
+            </form>
+          </div>
+        `;
+      }
+    });
+  });
+</script>
+
+</body>
+<footer>
+        <div class="footer-links">
+            <a href="Courses.html">Courses</a>
+            <a href="ContactUs.html">Contact Us</a>
+            <a href="AboutUs.html">About</a>
+            
+            <a href="#">Support</a>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2024 EasyTutor. All rights reserved.</p>
+        </div>
+    </footer>
+</html>

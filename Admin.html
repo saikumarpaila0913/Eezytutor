@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+   color: #333;
+   #f8f9fa
+}
+
+
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+aside {
+    flex: 0 0 20%; /* Sidebar width */
+    background-color: #555;
+    color: #fff;
+    padding: 20px;
+}
+
+aside h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    flex: 1; /* Main content area */
+    padding: 20px;
+    background-color: #fff;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+section h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.user-list {
+    margin-bottom: 20px;
+}
+
+.user-list ul {
+    padding: 0;
+}
+
+.user-list ul li {
+    margin-bottom: 5px;
+}
+
+.user-actions button {
+    margin-right: 10px;
+}
+
+.data-table {
+    overflow-x: auto;
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+.offer-form {
+    margin-top: 20px;
+}
+
+.offer-form label, .offer-form input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.analytics-chart img {
+    width: 100%;
+}
+
+.notification-settings {
+    margin-top: 20px;
+}
+
+.notification-settings h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+ .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+  
+
+   .admin-content {
+      display: flex;
+    }
+
+   .admin-block {
+      width: calc(50% - 20px);
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 0 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+   .admin-block-content {
+      padding: 20px;
+    }
+
+   .admin-block h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #007bff;
+      text-transform: uppercase;
+    }
+
+   .admin-block ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+   .admin-block li {
+      margin-bottom: 5px;
+    }
+
+   .admin-block a {
+      display: block;
+      padding: 5px 10px;
+      text-decoration: none;
+      color: #333;
+    }
+
+   .admin-block a:hover {
+      background-color: #007bff;
+      color: #fff;
+    }
+   .admin-menu {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+   .admin-menu a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+ /* Menu button for mobile view */
+  .menu-btn {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
+    margin-right: 20px; /* Increased margin from the right */
+  }
+
+  .menu-icon {
+    width: 30px;
+    height: 5px;
+    background-color: black;
+    margin: 6px auto;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Menu options for mobile view */
+  .menu-options {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: #ffffff;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    margin: 35px  ; /* Adjust margin */
+  }
+
+  .menu-options hr {
+    margin: 15px 0; /* Adjust margin for horizontal lines */
+    border: none;
+    border-top: 1px solid #ccc; /* Add horizontal line */
+  }
+
+  .menu-options a {
+    display: block;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+  }
+
+  .menu-options a:hover {
+    background-color: #2642B6;
+  }
+/* Show menu options when menu button is clicked */
+.menu-btn.active .menu-icon:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-btn.active .menu-icon:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active .menu-icon:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.menu-btn.active + .menu-options {
+  display: block;
+}
+
+
+</style>
+<body>
+    <header>
+        <h1>Welcome, Admin!</h1>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Settings</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+
+    <div class="container">
+    
+    <div class="admin-content">
+      <div class="admin-block">
+        <div class="admin-block-content">
+          <h3>User Management</h3>
+          <ul>
+            <li><a href="AddUser.html">Add User</a></li>
+            <li><a href="EditUser.html">Edit User</a></li>
+            <li><a href="DeleteUser.html">Delete User</a></li>
+            <li><a href="BlockUser.html">Block User</a></li>
+            <li><a href="UnblockUser.html">Unblock User</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="admin-block">
+        <div class="admin-block-content">
+          <h3>Data Management</h3>
+          <ul>
+            <li><a href="AddData.html">Add Data</a></li>
+            <li><a href="EditData.html">Edit Data</a></li>
+            <li><a href="DeleteData.html">Delete Data</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="container">
+        <aside>
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="#users">Manage Users</a></li>
+                <li><a href="#data">Manage Data</a></li>
+                <li><a href="#offers">Manage Offers</a></li>
+                <li><a href="#analytics">Analytics</a></li>
+                <li><a href="#notifications">Notifications</a></li>
+            </ul>
+        </aside>
+
+        <main>
+            <section id="users">
+                <h2>Manage Users</h2>
+                <!-- User management interface goes here -->
+                <div class="user-list">
+                    <h3>Active Users</h3>
+                    <ul>
+                        <li>User 1</li>
+                        <li>User 2</li>
+                        <li>User 3</li>
+                        <!-- Display a list of active users -->
+                    </ul>
+                </div>
+                <div class="user-actions">
+                    <button>Add User</button>
+                    <button>Block User</button>
+                    <button>Delete User</button>
+                    <!-- Buttons for user management actions -->
+                </div>
+            </section>
+
+            <section id="data">
+                <h2>Manage Data</h2>
+                <!-- Data management interface goes here -->
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Product A</td>
+                                <td>Electronics</td>
+                                <td>
+                                    <button>Edit</button>
+                                    <button>Delete</button>
+                                </td>
+                            </tr>
+                            <!-- Display a table of data with edit/delete actions -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="offers">
+                <h2>Manage Offers</h2>
+                <!-- Offer management interface goes here -->
+                <div class="offer-form">
+                    <h3>Create New Offer</h3>
+                    <form>
+                        <label for="offerName">Offer Name:</label>
+                        <input type="text" id="offerName" name="offerName" required>
+                        <label for="discount">Discount:</label>
+                        <input type="number" id="discount" name="discount" min="0" max="100" required>
+                        <button type="submit">Create Offer</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="analytics">
+                <h2>Analytics</h2>
+                <!-- Analytics dashboard goes here -->
+                <div class="analytics-chart">
+                    <!-- Display charts or graphs to visualize data -->
+                    <img src="analytics-chart.png" alt="Analytics Chart">
+                </div>
+            </section>
+
+            <section id="notifications">
+                <h2>Notifications</h2>
+                <!-- Notification settings and alerts go here -->
+                <div class="notification-settings">
+                    <h3>Email Notifications</h3>
+                    <label>
+                        <input type="checkbox" checked> Send email notifications
+                    </label>
+                    <h3>SMS Alerts</h3>
+                    <label>
+                        <input type="checkbox"> Send SMS alerts
+                    </label>
+                </div>
+            </section>
+        </main>
+    </div>
+
+<script>
+  // Function to toggle the display of menu options on mobile view
+  function toggleMenu() {
+    var menuOptions = document.getElementById('menuOptions');
+    if (menuOptions.style.display === 'block') {
+      menuOptions.style.display = 'none';
+    } else {
+      menuOptions.style.display = 'block';
+    }
+  }
+
+  // Close the menu if clicked outside of menu options
+  document.addEventListener('click', function(event) {
+    var menuOptions = document.getElementById('menuOptions');
+    var menuBtn = document.querySelector('.menu-btn');
+
+    // Check if the clicked element is not part of the menu or menu button
+    if (!menuOptions.contains(event.target) && !menuBtn.contains(event.target)) {
+      // Close the menu if it's open
+      if (menuOptions.style.display === 'block') {
+        menuOptions.style.display = 'none';
+      }
+    }
+  });
+</script></body>
+</html>

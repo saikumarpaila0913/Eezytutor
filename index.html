@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<title>Website Banner with Text Overlay</title>
+<style>
+  /* Style for the banner container */
+  .banner {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjusted height */
+    overflow: hidden;
+    margin-top: 100px; /* Adjusted margin to move the banner down */
+  }
+
+  /* Style for the image */
+  .banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Style for the text overlay */
+  .banner .text {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    
+    transform: translate(-50%, -50%);
+    color: black; /* Text color */
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .banner .text h1 {
+    font-weight: bold; /* Bold font for heading */
+    margin-bottom: 10px; /* Add some space below heading */
+  }
+
+  /* Style for the header with logo and navigation */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensure header is on top of other content */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  }
+
+  .logo {
+    margin-top:-110px;
+    max-height: 50px;
+    margin-left: 130px; /* Move the logo to the right by 40 pixels */
+    max-width: 80px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+
+
+
+
+
+  /* Style for the login and signup buttons */
+  .login-btn,
+  .signup-btn {
+     
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .signup-btn {
+     margin-right: 150px; 
+    }
+
+  .login-btn {
+    background-color: transparent;
+    color: black;
+  }
+
+  .signup-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  #login-form, #signup-form {
+            display: none; /* Hide the login and signup forms initially */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            margin-top: 20px; /* Added margin to separate sections */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+
+         .image-container {
+            position: absolute;
+            right: 50%; /* Position the container halfway from the right edge */
+            top: 50%; /* Center vertically */
+            transform: translate(50%, -50%); /* Adjust to center horizontally */
+        }
+
+        .image {
+            max-width: 100%; /* Ensure the image does not exceed container width */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Prevent any additional space below the image */
+        }
+
+
+        
+
+        .section-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .section {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+          margin-right:5px;
+          margin-bottom:5px;
+        }
+
+        .left-column {
+            flex: 1; /* Take up remaining space */
+            padding-right: 20px; /* Add some space between text and sections */
+        }
+
+        .right-column {
+            flex: 1; /* Take up remaining space */
+        }
+
+        h1, p {
+            margin: 0; /* Remove default margin */
+        }
+
+        /* Form styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+  footer {
+            background-color: #252827;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+
+        footer img {
+            width: 250px; /* Adjust the size of the logo */
+            margin-bottom: 10px;
+        }
+
+        footer .social-icons {
+            margin-top: 20px;
+        }
+
+        footer .section {
+            margin-bottom: 20px;
+        }
+
+        footer nav a {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+        .login-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .login-form input {
+            width: 200px;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .signup-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .signup-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .signup-form input {
+            width: 200px;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .signup-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+.fixed{
+    width: 50px;
+    height: 50px;
+    padding: 20px;
+    position: fixed;
+    right: 0%;
+    bottom: 20px;
+    color: #25d366;
+  }
+  body{
+    height: 1500px;
+  }
+.whatsapp-floter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.whatsapp-floter img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.whatsapp-floter img:hover {
+  transform: scale(1.1);
+}
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  /* Adjust styles for screens up to 768px wide (e.g., tablets and smaller desktops) */
+  .banner .text {
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .section {
+    padding: 10px;
+  }
+
+  .left-column, .right-column {
+    padding: 10px;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer img {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  footer .footer-section {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  /* Adjust styles for screens up to 600px wide (e.g., mobile devices) */
+  .banner .text {
+    font-size: 9px;
+    position: absolute;
+    top:42%;
+    left:40%;
+  }
+  .banner {
+       height: 150px; /* Adjusted height */
+    
+  }
+
+  .logo img {
+   margin-top:25px;
+    max-width: 120px;
+    margin-left: 0px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .signup-btn {
+    margin-right: 20px;
+  }
+}
+
+ @media only screen and (max-width: 768px) {
+
+   
+    h2 {
+      font-size: 20px;
+      margin-top: 40px; /* Adjust margin for smaller devices */
+    }
+  }
+   /* Menu button for mobile view */
+   /* Menu button for mobile view */
+  .menu-btn {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
+    margin-right: 20px; /* Increased margin from the right */
+  }
+
+  .menu-icon {
+    width: 30px;
+    height: 5px;
+    background-color: black;
+    margin: 6px auto;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Menu options for mobile view */
+  .menu-options {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: #ffffff;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    margin: 35px  ; /* Adjust margin */
+  }
+
+  .menu-options hr {
+    margin: 15px 0; /* Adjust margin for horizontal lines */
+    border: none;
+    border-top: 1px solid #ccc; /* Add horizontal line */
+  }
+
+  .menu-options a {
+    display: block;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+  }
+
+  .menu-options a:hover {
+    background-color: #2642B6;
+  }
+/* Show menu options when menu button is clicked */
+.menu-btn.active .menu-icon:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-btn.active .menu-icon:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active .menu-icon:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.menu-btn.active + .menu-options {
+  display: block;
+}
+
+
+
+
+  /* Media query for mobile view */
+  @media only screen and (max-width: 768px) {
+    .logo {
+      margin-left: 10px;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .login-btn,
+    .signup-btn {
+      display: none;
+    }
+
+    .menu-btn {
+      display: block;
+    }
+
+    .menu-options {
+      display: none;
+    }
+  }
+
+ /* Footer container styles */
+  .footer-container {
+    display: flex;
+    justify-content: space-between; /* Ensure equal spacing between blocks */
+    padding: 20px;
+    overflow: hidden; /* Prevent horizontal scrolling */
+    background-color: #333; /* Background color for the footer */
+    color: #fff; /* Text color for footer content */
+  }
+
+  /* Footer block styles */
+  .footer-block {
+    flex: 1; /* Each block occupies equal space */
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    
+  }
+
+  .footer-block h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .footer-block p,
+  .footer-block nav {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .footer-block a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-block a:hover {
+    color:  #333;
+  }
+
+  /* Media query for smaller screens */
+  @media only screen and (max-width: 768px) {
+    .footer-container {
+      flex-direction: column; /* Stack blocks vertically on smaller screens */
+    }
+    .footer-block {
+      margin-bottom: 10px; /* Add space between blocks on smaller screens */
+    }
+  }
+
+
+
+
+
+  /* Styling for the slider container */
+  .slider {
+    width: 100%;
+    height:250px;
+    overflow: hidden;
+    margin: 0 auto;
+    justify-content: center;
+   border: 1px solid gray;
+   box-shadow: 1px 1px 1px 1px ;
+   background-color: rgb(255, 255, 255);
+    position: relative; /* Add this for absolute positioning of buttons */
+  }
+  /* Styling for the images */
+  .slider img {
+    width: 70%;
+   margin-left: 220px;
+   margin-top: 60px;;
+    display: none; /* Hide images by default */
+  }
+  /* Style for navigation buttons */
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  .prev {
+  left:0px;
+
+  }
+  .next {
+    right: 0;
+  }
+
+  .phone-icon {
+    font-size: 24px;
+    color: rgb(32, 32, 33);
+    cursor: pointer;
+    margin-top:17px;
+  }
+  .circle{
+    height:60px;
+    width:60px;
+    border-radius: 30px;
+    background-color: rgb(228, 224, 218);
+    justify-content: center;
+    display: flex; 
+    position: block;
+  }
+  .circle:hover{
+    height:62px;
+    width:62px;
+  }
+  .image {
+    width: 100%;
+    height:650px;
+    display: none; /* Hide the image by default */
+  }
+.imgdiv1{
+  border:1px solid gray ;
+  height:150px;
+  width:80px;
+  background-image:url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fmobisoftinfotech.com%2Fresources%2Fblog%2Fmobile-app-development-process-testing-guide%2F&psig=AOvVaw2afYOVDlg5qP7Ub6e6Qvd2&ust=1712658872863000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJicqM-1soUDFQAAAAAdAAAAABAE.png");
+
+}
+.card {
+  box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.6s;
+  width: 18%;
+  margin:40px ;
+
+  
+}
+.card img{
+  width:100%;
+  height:100%
+}
+.cards{
+  display: flex;
+}
+#toggleButton{
+  padding:10px;
+  height:40px;
+  
+}
+</style>
+
+
+</style>
+</head>
+<body onload="hideForms()">
+
+<header>
+  <div class="logo">
+    <img margin-top:-30 style="width:250%" src="1.png" alt="Logo">
+  </div>
+ 
+
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="Courses.html">COURSES</a>
+    <a href="AboutUs.html">ABOUT US</a>
+    <a href="ContactUs.html">CONTACT US</a>
+    <a href="AdminLog.html">ADMIN</a>
+  </nav>
+    <a href="loginform.html" class="signup-btn" target="_blank">Login / Sign Up</a>
+  </div>
+
+  <!-- Menu button for mobile view -->
+  <button class="menu-btn" onclick="toggleMenu()">
+    <div class="menu-icon"></div>
+    <div class="menu-icon"></div>
+    <div class="menu-icon"></div>
+  </button>
+
+
+  <div class="menu-options" id="menuOptions">
+   <a href="index.html">HOME</a>
+    <a href="Courses.html">COURSES</a>
+    <a href="AboutUs.html">ABOUT</a>
+    <a href="ContactUs.html">CONTACT US</a>
+    <a href="AdminLog.html">ADMIN</a>
+    <a href="loginform.html" target="_blank">LOGIN/SIGNUP</a>
+
+  </div>
+
+<script>
+  // Function to toggle the display of menu options on mobile view
+  function toggleMenu() {
+    var menuOptions = document.getElementById('menuOptions');
+    if (menuOptions.style.display === 'block') {
+      menuOptions.style.display = 'none';
+    } else {
+      menuOptions.style.display = 'block';
+    }
+  }
+
+  // Close the menu if clicked outside of menu options
+  document.addEventListener('click', function(event) {
+    var menuOptions = document.getElementById('menuOptions');
+    var menuBtn = document.querySelector('.menu-btn');
+
+    // Check if the clicked element is not part of the menu or menu button
+    if (!menuOptions.contains(event.target) && !menuBtn.contains(event.target)) {
+      // Close the menu if it's open
+      if (menuOptions.style.display === 'block') {
+        menuOptions.style.display = 'none';
+      }
+    }
+  });
+</script>
+</header>
+
+<div class="banner">
+  <img src="ban.jpeg" alt="Banner Image">
+  <div class="text">
+    <h1>Unlock Knowledge Anywhere, Anytime With Experts.</h1>
+    <p>Our commitment is to guide you to the finest online courses, offering expert insights whenever and wherever you are.</p>
+  </div>
+</div>
+
+<!-- Additional content to push the banner down -->
+
+
+
+<h2 style="font-size:50; text-align:center;margin-top: 80px;"> EezyTutor's Way of Success </h2>
+
+<div class="container">
+  <div class="section">
+      <h2>Industry-Oriented Curriculum</h2>
+      <p>Build your career with our cutting-edge curriculum which is based on high in-demand tech skills.</p>
+  </div>
+  <div class="section">
+      <h2>Top Experts as Educators</h2>
+      <p>Our programs are led by tech professionals who will share their expertise with you as an educator.</p>
+  </div>
+  <div class="section">
+      <h2>Great Career Opportunities</h2>
+      <p>Fast-track your career with our expert-led mock interviews and complete job assistance.</p>
+  </div>
+</div>
+
+
+ <h2>A Few of our hiring partners</h2>
+
+ 
+<div class="slider">
+  <!-- Images to be displayed in the slider -->
+  <img src="images/1.png" alt="Image 1">
+  <img src="images/2.png" alt="Image 2">
+  <img src="images/3.png" alt="Image 3">
+  <img src="images/4.png" alt="Image 4">
+  <img src="images/5.png" alt="Image 5">
+  <img src="images/6.png" alt="Image 6">
+  <!-- Navigation buttons -->
+  <button class="slider-btn prev" onclick="prevSlide()"><</button>
+  <button class="slider-btn next" onclick="nextSlide()">></button>
+</div>
+
+
+
+
+<h2>Our Students Placed In </h2>
+<div class="cards">
+
+<div class="card">
+  <img src="images/8frend.png" alt="frontend" >
+</div>
+<div class="card">
+  <img src="images/9bkend.png" alt="frontend" >
+</div>
+<div class="card">
+  <img src="images/10db.png" alt="frontend" >
+</div>
+<div class="card">
+  <img src="images/11aws.png" alt="frontend" >
+</div>
+<div class="card">
+  <img src="images/12testing.png" alt="frontend" >
+</div>
+
+</div>
+
+
+
+
+<center>
+<!-- Image to show/hide -->
+<img src="images/7tech.png" alt="Example Image" class="image">
+
+<button id="toggleButton">Show More/Less</button>
+</center>
+<script>
+  // JavaScript code to toggle image visibility
+  const image = document.querySelector('.image');
+  const toggleButton = document.getElementById('toggleButton');
+
+  toggleButton.addEventListener('click', function() {
+    if (image.style.display === 'none') {
+      image.style.display = 'block'; // Show the image
+    } else {
+      image.style.display = 'none'; // Hide the image
+      
+    }
+  });
+
+</script>
+</div>
+<script>
+  // JavaScript code for sliding images
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.slider img');
+  const totalSlides = slides.length;
+
+  function showSlide(index) {
+    // Hide all slides
+    slides.forEach(slide => slide.style.display = 'none');
+    // Show the slide at the given index
+    slides[index].style.display = 'block';
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    showSlide(currentIndex);
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    showSlide(currentIndex);
+  }
+
+  // Show the first slide initially
+  showSlide(currentIndex);
+
+  // Automatically slide to next image every 3 seconds
+  setInterval(nextSlide, 1500);
+</script>
+
+
+<div class="container">
+  <div class="left-column">
+      <h1 style = "margin-bottom:10px;margin-left: 40px;">Your Career <br> Our Responsibility</h1>
+      <p style="margin-left: 40px;">Your success is our mission, and we will support you until you reach your true potential and secure your dream job.</p>
+  </div>
+  <div class="right-column">
+      <div class="section-container">
+          <div class="section">
+              <h2>Resume & LinkedIn Building</h2>
+              <p>Build an impactful resume with real-world projects and skills to stand out among recruiters.</p>
+          </div>
+      </div>
+      <div class="section-container">
+          <div class="section">
+              <h2>Soft Skill Development</h2>
+              <p>Enhance your personality for unparalleled career growth.</p>
+          </div>
+      </div>
+      <div class="section-container">
+          <div class="section">
+              <h2>Mock Interviews</h2>
+              <p>Refine your skills with unlimited mock interviews with the experts to shine out on your D-day.</p>
+          </div>
+      </div>
+      <div class="section-container">
+          <div class="section">
+              <h2>Complete Job Assistance</h2>
+              <p>Job referrals and guidance to secure your ideal tech job at top companies.</p>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+</body>
+
+
+<div class="whatsapp-floter">
+  <a href="https://api.whatsapp.com/send?phone=7382766952" target="_blank">
+    <img src="whatsapp.jpeg" alt="WhatsApp Icon">
+  </a>
+</div>
+
+
+<footer>
+  <div class="footer-container">
+    <!-- Logo and Slogan Block -->
+    <div class="footer-block logo-block">
+      <img src="niha.png" alt="EezyTutor Logo">
+      <p>With you, every step of the way</p>
+    </div>
+
+    <!-- About EezyTutor Block -->
+    <div class="footer-block">
+      <div class="footer-text">
+        <h2>About EezyTutor</h2>
+        <p class="footer-text-item">HOME</p>
+         <p class="footer-text-item">FAQs</p>
+        <p class="footer-text-item">  CONTACT US</p>
+       
+        <p class="footer-text-item">  Privacy Policy</p>
+        <p class="footer-text-item">Terms of Use</p>
+      </div>
+    </div>
+
+    <!-- Courses Block -->
+    <div class="footer-block">
+      <div class="footer-text">
+        <h2>Courses</h2>
+          <p class="footer-text-item">AWS</p>
+        <p class="footer-text-item">DevOps</p>
+      
+        <p class="footer-text-item">Data Science</p>
+         <p class="footer-text-item">Full Stack Web Development</p>
+      </div>
+    </div>
+
+    <!-- Explore Block -->
+    <div class="footer-block">
+      <div class="footer-text">
+        <h2>Explore</h2>
+        <p class="footer-text-item">Become a Mentor</p>
+        <p class="footer-text-item">Masterclass</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+</html>
